@@ -17,10 +17,16 @@ class ShoppingView {
         let cb = document.createElement("input");
         cb.type = "checkbox";
         cb.classList.add("form-control");
-        cb.onclick = function() { item.purchased = true; };
+        cb.onclick = function () {
+            item.purchased = true;
+            setTimeout(function () {
+                $(row).remove();
+            }, 2000);
+            shoppingModel.removeItem();
+        };
         row.appendChild(cb);
 
-        for (let val of ['itemname', 'quantity', 'store', 'category', 'price']) {
+        for (let val of ['itemname', 'qty', 'store', 'category', 'priority', 'price']) {
             let td = document.createElement("td");
             td.innerHTML = item[val];
             row.appendChild(td);

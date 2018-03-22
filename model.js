@@ -1,4 +1,5 @@
 'use strict';
+
 class Item {
     constructor(name, quantity, priority, store, category, price) {
         this.itemname = name;
@@ -18,13 +19,12 @@ class Item {
 
     set purchased(nv) {
         this._purchased = nv;
-        alert(`${this.itemname} was purchased`)
     }
 }
 
 class Subject {
     constructor() {
-        this.handlers= []
+        this.handlers = []
     }
 
     subscribe(fn) {
@@ -33,10 +33,13 @@ class Subject {
 
     unsubscribe(fn) {
         this.handlers = this.handlers.filter(
-            function(itemname) {
+            function (itemname) {
                 if (itemname !== fn) {
                     return itemname;
+                } else {
+                    this.handlers.pop();
                 }
+
             }
         );
     }
@@ -44,7 +47,7 @@ class Subject {
     publish(msg, someobj) {
         let scope = someobj || window;
         for (let fn of this.handlers) {
-            fn(scope, msg)
+            fn(scope, msg);
         }
     }
 }
@@ -59,6 +62,20 @@ class ShoppingList extends Subject {
 
     addItem(it) {
         this.newItems.push(it);
-        this.publish('newitem', this)
+        this.publish('newitem', this);
+        localStorage.setItem('table', JSON.stringify(this.newItems));
+    }
+
+    removeItem() {
+        this.newItems.pop();
+        localStorage.setItem('table', JSON.stringify(this.newItems));
+        this.publish('newlist', this);
+    }
+
+    localRetrieve() {
+        if (localStorage.length !== 0) {
+            this.newItems = JSON.parse(localStorage.getItem('table'));
+            this.publish('newlist', this);
+        }
     }
 }

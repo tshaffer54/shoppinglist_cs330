@@ -1,11 +1,19 @@
-.high {
-    background-color: blue;
+.High {
+    background-color: red;
 }
 
-.medium {
-    background-color: green;
+.Medium {
+    background-color: yellow;
 }
 
-.low {
-    background-color: purple;
+.Low {
+    background-color: white;
+}
+
+td {
+    text-decoration-style: solid;
+}
+
+cb.classList {
+
 }

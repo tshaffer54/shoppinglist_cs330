@@ -78,7 +78,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th></th><th>Item</th><th>Quantity</th><th>Store</th><th>Section</th><th>Price</th>
+                            <th></th><th onclick="sortTable(0)">Item</th><th onclick="sortTable(1)">Quantity</th><th>Store</th><th>Section</th><th>Priority</th><th>Price</th>
                         </tr>
                     </thead>
                     <tbody id="shoppinglist"></tbody>
@@ -87,9 +87,8 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="model.js" type="text/javascript"></script>
         <script src="view.js" type="text/javascript"></script>
+        <script src="model.js" type="text/javascript"></script>
         <script src="shopping.js" type="text/javascript"></script>
-
     </body>
 </html>
